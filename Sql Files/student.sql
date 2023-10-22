@@ -16,3 +16,9 @@ create table marks(
      Course_code varchar(8),
      Marks_Obtained int,
      Date date);
+
+create table Eligibility(
+     EligibilityID varchar(8) PRIMARY KEY,
+     StudentID varchar(8),
+     Eligibility_status varchar(15),
+     Course_code varchar(8));
