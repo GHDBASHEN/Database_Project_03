@@ -8,3 +8,11 @@ create table student(
      Email varchar(20),
      DateOfBirth date,
      Gender char(1));
+
+
+create table marks(
+     MarksID varchar(12) PRIMARY KEY,
+     StudentID varchar(8),
+     Course_code varchar(8),
+     Marks_Obtained int,
+     Date date);
