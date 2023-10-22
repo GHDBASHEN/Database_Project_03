@@ -1,0 +1,23 @@
+CREATE TABLE Medical (
+MedicalID varchar(15) NOT NULL,
+Reason varchar(40),
+StartDate date NOT NULL,
+EndDate date,
+PRIMARY KEY (MedicalID)
+);
+
+CREATE TABLE StudentMedical(
+StudentID varchar(8) NOT NULL,
+MedicalID varchar(15) NOT NULL,
+SubmitDate date,
+CourseCode varchar(8)
+);
+
+CREATE TABLE GPA(
+GPAID varchar(15) NOT NULL,
+SGPA int,
+CGPA int,
+Semester char(5),
+StudentID varchar(8) NOT NULL,
+PRIMARY KEY(GPAID)
+);
