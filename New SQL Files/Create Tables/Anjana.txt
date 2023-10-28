@@ -1,0 +1,29 @@
+-- Create the StudentAttendCourse table
+CREATE TABLE StudentAttendCourse (
+    StudentID VARCHAR(7),
+    Course_code VARCHAR(10),
+    Date DATE,
+    Theory_or_Practical VARCHAR(20),
+    Status VARCHAR(10),
+    FOREIGN KEY (StudentID) REFERENCES Student(StudentID),
+    FOREIGN KEY (Course_code) REFERENCES Course(Course_code)
+);
+
+-- Create the Medical table
+CREATE TABLE Medical (
+    MedicalID INT PRIMARY KEY,
+    Reason VARCHAR(100),
+    StartDate DATE,
+    EndDate DATE
+);
+
+-- Create the StudentSubmitMedical table
+CREATE TABLE StudentSubmitMedical (
+    Course_code VARCHAR(10),
+    StudentID VARCHAR(7),
+    Submit_date DATE,
+    MedicalID INT,
+    FOREIGN KEY (Course_code) REFERENCES Course(Course_code),
+    FOREIGN KEY (StudentID) REFERENCES Student(StudentID),
+    FOREIGN KEY (MedicalID) REFERENCES Medical(MedicalID)
+);
