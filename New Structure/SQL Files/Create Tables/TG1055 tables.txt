@@ -1,0 +1,27 @@
+ CREATE TABLE Student (
+        StudentID VARCHAR(7) PRIMARY KEY,
+        FirstName VARCHAR(50),
+        LastName VARCHAR(50),
+        NIC VARCHAR(15),
+        Status VARCHAR(20),
+        Address VARCHAR(100),
+        Email VARCHAR(100),
+        DateOfBirth DATE
+    );
+
+CREATE TABLE Course (
+        Course_code VARCHAR(10) PRIMARY KEY,
+        Course_name VARCHAR(100),
+        Credits INT,
+        Type VARCHAR(20)
+    );
+
+CREATE TABLE StudentEnrollCourse (
+        Course_code VARCHAR(10),
+        StudentID VARCHAR(7),
+        Year INT,
+        FOREIGN KEY (Course_code) REFERENCES Course(Course_code),
+        FOREIGN KEY (StudentID) REFERENCES Student(StudentID)
+    );
+
+
