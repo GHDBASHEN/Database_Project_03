@@ -1,0 +1,52 @@
+INSERT INTO student (StudentID, FirstName, LastName, NIC, Status, Address, Email, DateOfBirth, Gender)
+VALUES
+    ('STD001', 'GHDB', 'Ashen', '200125100634', 'Single', 'Karagoda, Uyangoda, Kaburupitiya, Matara', 'anjanamodas@hotmail.com', '1999-02-03', 'M'),
+    ('STD002', 'Nadia', 'Fernando', '200125100635', 'Single', 'Borella, Colombo', 'nadia.fernando@email.com', '1998-04-15', 'F'),
+    ('STD003', 'Rajitha', 'Perera', '200125100636', 'Married', 'Dehiwala, Colombo', 'rajitha.perera@email.com', '1997-09-20', 'M'),
+    ('STD004', 'Samantha', 'Silva', '200125100637', 'Single', 'Kandy', 'samantha.silva@email.com', '1998-11-25', 'M'),
+    ('STD005', 'Malinda', 'Ranasinghe', '200125100638', 'Single', 'Colombo 05', 'malinda@email.com', '1997-12-12', 'M'),
+    ('STD006', 'Kamal', 'Perera', '200125100639', 'Single', 'Dehiwala, Colombo', 'kamal@email.com', '1998-06-20', 'M'),
+    ('STD007', 'Priya', 'Fernando', '200125100640', 'Single', 'Kandy', 'priya@email.com', '1999-02-15', 'F'),
+    ('STD008', 'Lahiru', 'Silva', '200125100641', 'Married', 'Nugegoda, Colombo', 'lahiru@email.com', '1996-11-05', 'M'),
+    ('STD009', 'Samantha', 'Perera', '200125100642', 'Single', 'Galle', 'samantha@email.com', '1998-09-10', 'F');
+
+
+
+
+
+
+INSERT INTO Marks (MarksID, StudentID, Course_code, Marks_Obtained, Date)
+VALUES
+    ('M2023144521', 'STD001', 'ICT001', 50, '2020-10-05'),
+('M2023144522', 'STD002', 'ICT002', 68, '2020-10-10'),
+    ('M2023144523', 'STD002', 'ICT003', 90, '2020-10-12'),
+    ('M2023144524', 'STD003', 'ICT001', 75, '2020-10-11'),
+    ('M2023144525', 'STD003', 'ICT002', 88, '2020-10-13'),
+    ('M2023144526', 'STD004', 'ICT004', 92, '2020-10-10'),
+
+    ('M2023144527', 'STD005', 'ICT003', 82, '2020-10-18'),
+    ('M2023144528', 'STD005', 'ICT004', 68, '2020-10-20'),
+    ('M2023144529', 'STD006', 'ICT001', 90, '2020-10-15'),
+    ('M2023144530', 'STD006', 'ICT002', 78, '2020-10-17'),
+    ('M2023144531', 'STD007', 'ICT004', 95, '2020-10-16');
+
+
+
+
+
+
+
+
+INSERT INTO Eligibility (EligibilityID, StudentID, Eligibility_status, Course_code)
+VALUES
+    ('E12546321', 'STD001', 'Eligible', 'ICT001'),
+('E12546322', 'STD002', 'Eligible', 'ICT002'),
+    ('E12546323', 'STD002', 'Eligible', 'ICT003'),
+    ('E12546324', 'STD003', 'Eligible', 'ICT001'),
+    ('E12546325', 'STD003', 'Eligible', 'ICT002'),
+    ('E12546326', 'STD004', 'Eligible', 'ICT004'),
+    ('E12546327', 'STD005', 'Eligible', 'ICT003'),
+    ('E12546328', 'STD005', 'Eligible', 'ICT004'),
+    ('E12546329', 'STD006', 'Eligible', 'ICT001'),
+    ('E12546330', 'STD006', 'Eligible', 'ICT002'),
+    ('E12546331', 'STD007', 'Eligible', 'ICT004');

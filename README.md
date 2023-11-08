@@ -1,26 +1,28 @@
 # Database_Project_03
 
-
 # Student Information Management System
 
-![Project Image](https://study.com/cimages/videopreview/videopreview-full/dl4oegfq0k.jpg)
+The **Student Information Management System** is a comprehensive database management system designed for the Faculty of Technology. It allows you to efficiently manage student details, attendance, marks, eligibility, and more for academic courses. This system provides user roles for Admin, Dean, Lecturer, Technical Officer, and Student, with varying levels of access and privileges.
+
+## ER Digram
+
+![ER Digram](documentation/Database%20ER.png)
+
+## Relational Mapping
+
+![Relational Mapping](documentation/Relational%20map.png)
 
 ## Table of Contents
 
-- [Description](#description)
-- [Features](#features)
-- [Getting Started](#getting-started)
-  - [Prerequisites](#prerequisites)
-  - [Installation](#installation)
-- [Usage](#usage)
-- [Database Schema](#database-schema)
-- [Contributing](#contributing)
-- [License](#license)
-- [Acknowledgments](#acknowledgments)
-
-## Description
-
-The **Student Information Management System** is a comprehensive database management system designed for the Faculty of Technology. It allows you to efficiently manage student details, attendance, marks, eligibility, and more for academic courses. This system provides user roles for Admin, Dean, Lecturer, Technical Officer, and Student, with varying levels of access and privileges.
+- [Database_Project_03](#database_project_03)
+- [Student Information Management System](#student-information-management-system)
+  - [ER Digram](#er-digram)
+  - [Relational Mapping](#relational-mapping)
+  - [Table of Contents](#table-of-contents)
+  - [Features](#features)
+  - [Getting Started](#getting-started)
+    - [Prerequisites](#prerequisites)
+    - [Installation](#installation)
 
 ## Features
 
@@ -48,3 +50,4 @@ The **Student Information Management System** is a comprehensive database manage
 
    ```bash
    git clone https://github.com/GHDBASHEN/Database_Project_03.git
+   ```

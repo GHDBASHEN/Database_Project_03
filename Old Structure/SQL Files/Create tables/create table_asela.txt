@@ -1,0 +1,35 @@
+CREATE TABLE faculty_members (
+    NIC VARCHAR(13),
+    FirstName VARCHAR(20),
+    LastName VARCHAR(20),
+    PhoneNumber VARCHAR(14),
+    CourseCode VARCHAR(10),
+    Date DATE,
+    Type VARCHAR(15)
+);
+
+CREATE TABLE acadamic (
+    NIC VARCHAR(13),
+    Department VARCHAR(10),
+    Email VARCHAR(20),
+    Type VARCHAR(10)
+);
+
+CREATE TABLE grades (
+    NIC VARCHAR(10),
+    GradeID VARCHAR(5),
+    MarksID VARCHAR(12),
+    Minimum_marks FLOAT,
+    Grade_name VARCHAR(5),
+    Grade_point FLOAT
+);
+
+CREATE TABLE marks (
+    NIC VARCHAR(10),
+    GradecreID VARCHAR(5),
+    MarksID VARCHAR(12),
+    Minimum_marks FLOAT,
+    Grade_name VARCHAR(5),
+    Grade_point FLOAT
+);
+
