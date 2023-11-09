@@ -6,23 +6,11 @@ The **Student Information Management System** is a comprehensive database manage
 
 ## ER Digram
 
-![ER Digram](documentation/Database%20ER.png)
+![ER Digram](digrams/ER/ER.png)
 
 ## Relational Mapping
 
-![Relational Mapping](documentation/Relational%20map.png)
-
-## Table of Contents
-
-- [Database_Project_03](#database_project_03)
-- [Student Information Management System](#student-information-management-system)
-  - [ER Digram](#er-digram)
-  - [Relational Mapping](#relational-mapping)
-  - [Table of Contents](#table-of-contents)
-  - [Features](#features)
-  - [Getting Started](#getting-started)
-    - [Prerequisites](#prerequisites)
-    - [Installation](#installation)
+![Relational Mapping](digrams/RelationalMapping/RP.png)
 
 ## Features
 
