@@ -1,0 +1,14 @@
+CREATE OR REPLACE VIEW attendance_summary_2018 AS
+SELECT 
+    s.student_id, 
+    u.first_name, 
+    u.last_name,
+    c.code as course_code,
+    CONCAT(ROUND((COUNT(CASE WHEN ca.Status = 'Present' THEN 1 END) / COUNT(*) * 100), 2), '%') AS attendance_percentage,
+    s.batch_year
+FROM students s
+JOIN users u ON s.user_id = u.user_id
+JOIN course_attendence ca ON s.student_id = ca.student_id
+JOIN courses c ON ca.course_code = c.code
+WHERE s.batch_year = '2018'
+GROUP BY s.student_id, u.first_name, u.last_name, c.code, s.batch_year;
