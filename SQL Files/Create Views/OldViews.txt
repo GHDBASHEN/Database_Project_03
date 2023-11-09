@@ -1,0 +1,87 @@
+Views ================================================
+CREATE VIEW CACalculatedMarks AS
+SELECT
+    c.StudentID,
+    c.Course_code,
+    CASE
+        WHEN c.Project IS NULL THEN (COALESCE(c.Mid, 0) * 25 / 100)
+                                    + (COALESCE(c.Quiz1, 0) + COALESCE(c.Quiz2, 0) + COALESCE(c.Quiz3, 0)) * 15 / 30
+        ELSE (COALESCE(c.Mid, 0) * 25 / 100)
+             + (SELECT SUM(score)
+                FROM (
+                    SELECT
+                        COALESCE(c.Quiz1, 0) AS score
+                    UNION ALL
+                    SELECT
+                        COALESCE(c.Quiz2, 0)
+                    UNION ALL
+                    SELECT
+                        COALESCE(c.Quiz3, 0)
+                    ) AS quiz_scores
+                ORDER BY score DESC
+                LIMIT 2
+               ) * 10 / 20
+             + COALESCE(c.Project, 0) * 5 / 100
+    END AS TotalCA
+FROM CAMarks c;
+
+
+CREATE VIEW StudentCourseGrades AS
+SELECT
+    CAC.StudentID,
+    CAC.Course_code,
+    (CAC.TotalCA + (END.Marks * 0.6)) AS TotalMarks,
+    CASE
+        WHEN (CAC.TotalCA + (END.Marks * 0.6)) >= 85 THEN 'A+'
+        WHEN (CAC.TotalCA + (END.Marks * 0.6)) >= 80 THEN 'A'
+        WHEN (CAC.TotalCA + (END.Marks * 0.6)) >= 75 THEN 'A-'
+        WHEN (CAC.TotalCA + (END.Marks * 0.6)) >= 70 THEN 'B+'
+        WHEN (CAC.TotalCA + (END.Marks * 0.6)) >= 65 THEN 'B'
+        WHEN (CAC.TotalCA + (END.Marks * 0.6)) >= 60 THEN 'B-'
+        WHEN (CAC.TotalCA + (END.Marks * 0.6)) >= 55 THEN 'C+'
+        WHEN (CAC.TotalCA + (END.Marks * 0.6)) >= 50 THEN 'C'
+        WHEN (CAC.TotalCA + (END.Marks * 0.6)) >= 45 THEN 'C-'
+        WHEN (CAC.TotalCA + (END.Marks * 0.6)) >= 40 THEN 'D'
+        ELSE 'F'
+    END AS Grade
+FROM CACalculatedMarks CAC
+JOIN ENDMarks END ON CAC.StudentID = END.StudentID AND CAC.Course_code = END.Course_code;
+
+
+CREATE VIEW StudentGPA AS
+SELECT
+    SCG.StudentID,
+    SCG.Course_code,
+    SCG.TotalMarks,
+    SCG.Grade,
+    CASE
+        WHEN SCG.Grade = 'A+' THEN 4.0
+        WHEN SCG.Grade = 'A' THEN 4.0
+        WHEN SCG.Grade = 'A-' THEN 3.7
+        WHEN SCG.Grade = 'B+' THEN 3.3
+        WHEN SCG.Grade = 'B' THEN 3.0
+        WHEN SCG.Grade = 'B-' THEN 2.7
+        WHEN SCG.Grade = 'C+' THEN 2.3
+        WHEN SCG.Grade = 'C' THEN 2.0
+        WHEN SCG.Grade = 'C-' THEN 1.7
+        WHEN SCG.Grade = 'D' THEN 1.0
+        ELSE 0.0
+    END AS GradePoint
+FROM StudentCourseGrades SCG;
+
+
+CREATE VIEW SemesterGPA AS
+SELECT
+    StudentID,
+    Course_code,
+    AVG(GradePoint) AS SemesterGPA
+FROM StudentGPA
+GROUP BY StudentID, Course_code;
+
+
+CREATE VIEW TotalGPA AS
+SELECT
+    StudentID,
+    AVG(SemesterGPA) AS TotalGPA
+FROM SemesterGPA
+GROUP BY StudentID;
