@@ -1,0 +1,25 @@
+DELIMITER //
+
+CREATE PROCEDURE GetBatchAttendance(IN batch_year_param INT, IN course_code_param VARCHAR(10))
+BEGIN
+    SELECT 
+        s.student_id, 
+        u.first_name, 
+        u.last_name,
+        c.code as course_code,
+        CONCAT(ROUND((COUNT(CASE WHEN ca.Status = 'Present' THEN 1 END) / COUNT(*) * 100), 2), '%') AS attendance_percentage,
+        CASE 
+            WHEN (COUNT(CASE WHEN ca.Status = 'Present' THEN 1 END) / COUNT(*) * 100) >= 80 THEN 'Eligible'
+            ELSE 'Not Eligible'
+        END AS eligibility_status
+    FROM students s
+    JOIN users u ON s.user_id = u.user_id
+    JOIN course_attendence ca ON s.student_id = ca.student_id
+    JOIN courses c ON ca.course_code = c.code
+    WHERE s.batch_year = batch_year_param AND c.code = course_code_param
+    GROUP BY s.student_id, u.first_name, u.last_name, c.code;
+END //
+
+DELIMITER ;
+
+CALL GetBatchAttendance(2020, 'ICT7890');

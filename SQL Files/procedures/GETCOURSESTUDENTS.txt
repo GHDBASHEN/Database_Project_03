@@ -1,0 +1,9 @@
+DELIMITER //
+CREATE PROCEDURE GETCOURSESTUDENTS(IN course_code_param VARCHAR(10))
+    BEGIN
+     SELECT s.student_id,u.first_name FROM course_enroll c INNER JOIN students s ON c.student_id=s.student_id INNER JOIN users u ON u.user_id = s.user_id  where c.course_code = course_code_param;
+    END //
+
+DELIMITER ;
+
+CALL GETCOURSESTUDENTS('ICT1234');
