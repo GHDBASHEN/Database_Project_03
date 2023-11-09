@@ -234,8 +234,6 @@ VALUES
 
 
 
-
-
 CREATE TABLE course_enroll (
     id int AUTO_INCREMENT PRIMARY KEY,
     course_code VARCHAR(10) NOT NULL,
@@ -263,6 +261,12 @@ VALUES
 ('ET6789', '20171001', 2021, 'Regular'),
 ('ET7890', '20171002', 2021, 'Regular'),
 ('ICT1234', '20171003', 2021, 'Regular'),
+('ICT1234', '20171001', 2021, 'Regular'),
+('ICT1234', '20171002', 2021, 'Regular'),
+('ICT1234', '20171003', 2021, 'Regular'),
+('ICT1234', '20171004', 2021, 'Regular'),
+('ICT1234', '20171005', 2021, 'Regular'),
+('ICT1234', '20171006', 2021, 'Regular'),
 ('ICT2345', '20171004', 2021, 'Regular'),
 ('ICT3456', '20171005', 2021, 'Regular'),
 ('ICT4567', '20171006', 2021, 'Regular'),
@@ -352,7 +356,6 @@ VALUES
 ('20171005', 'BST5678', '2023-10-17', 'Theory', 'Present'),
 ('20171006', 'BST7890', '2023-10-15', 'Theory', 'Present'),
 ('20171006', 'BST7890', '2023-10-17', 'Theory', 'Present'),
-('20171001', 'ICT7890', '2023-10-15', 'Theory', 'Present'),
 ('20171002', 'ICT7890', '2023-10-15', 'Theory', 'Absent'),
 ('20171003', 'ICT7890', '2023-10-15', 'Theory', 'Present'),
 ('20171004', 'ICT7890', '2023-10-15', 'Theory', 'Present'),
@@ -371,7 +374,27 @@ VALUES
 ('20201002', 'ICT7890', '2023-10-15', 'Theory', 'Present'),
 ('20201003', 'ICT7890', '2023-10-15', 'Theory', 'Present'),
 ('20201004', 'ICT7890', '2023-10-15', 'Theory', 'Present'),
-('20201005', 'ICT7890', '2023-10-15', 'Theory', 'Absent');
+('20201005', 'ICT7890', '2023-10-15', 'Theory', 'Absent'),
+('20171003', 'ICT7890', '2023-10-17', 'Theory', 'Present'),
+('20171004', 'ICT7890', '2023-10-17', 'Theory', 'Present'),
+('20171005', 'ICT7890', '2023-10-17', 'Theory', 'Absent'),
+('20181001', 'ICT7890', '2023-10-17', 'Theory', 'Present'),
+('20181002', 'ICT7890', '2023-10-17', 'Theory', 'Present'),
+('20181003', 'ICT7890', '2023-10-17', 'Theory', 'Absent'),
+('20181004', 'ICT7890', '2023-10-17', 'Theory', 'Present'),
+('20181005', 'ICT7890', '2023-10-17', 'Theory', 'Present'),
+('20191001', 'ICT7890', '2023-10-17', 'Theory', 'Absent'),
+('20191002', 'ICT7890', '2023-10-17', 'Theory', 'Present'),
+('20191003', 'ICT7890', '2023-10-17', 'Theory', 'Present'),
+('20191004', 'ICT7890', '2023-10-17', 'Theory', 'Absent'),
+('20191005', 'ICT7890', '2023-10-17', 'Theory', 'Present'),
+('20201001', 'ICT7890', '2023-10-17', 'Theory', 'Absent'),
+('20201002', 'ICT7890', '2023-10-17', 'Theory', 'Present'),
+('20201003', 'ICT7890', '2023-10-17', 'Theory', 'Present'),
+('20201004', 'ICT7890', '2023-10-17', 'Theory', 'Absent'),
+('20201005', 'ICT7890', '2023-10-17', 'Theory', 'Absent'),
+('20201004', 'ICT7890', '2023-10-19', 'Theory', 'Present'),
+('20201005', 'ICT7890', '2023-10-17', 'Theory', 'Present');
 
 
 
@@ -400,6 +423,7 @@ CREATE TABLE medical_submit (
     FOREIGN KEY (student_id) REFERENCES students(student_id),
     FOREIGN KEY ( medical_id ) REFERENCES medical(id)
 );
+
 INSERT INTO medical_submit (course_code, student_id, medical_id) VALUES
 ('BST1234', '20181001', 1),
 ('BST1235', '20181002', 2),
@@ -493,6 +517,7 @@ CREATE TABLE project_marks (
     FOREIGN KEY (student_id) REFERENCES students(student_id),
     FOREIGN KEY (course_code) REFERENCES courses(code)
 );
+
 -- Seeding data into the project_marks table
 INSERT INTO project_marks (student_id, course_code, attempt_date, marks) VALUES
 ('20171001', 'BST1234', '2023-12-10', 85),
@@ -561,6 +586,7 @@ CREATE TABLE final_marks (
     FOREIGN KEY (student_id) REFERENCES students(student_id),
     FOREIGN KEY (course_code) REFERENCES courses(code)
 );
+
 -- Seeding data into the final_marks table
 INSERT INTO final_marks (student_id, course_code, ca_mark, end_mark, total_marks, grade, updated_at) VALUES
 ('20171001', 'BST1234', 92, 85, 177, 'A', '2023-12-20'),
@@ -594,6 +620,7 @@ CREATE TABLE courses_in_charge (
     FOREIGN KEY (lecturer_id) REFERENCES lecturer(id),
     FOREIGN KEY (course_code) REFERENCES courses(code)
 );
+
 -- Seeding data into the courses_in_charge table
 INSERT INTO courses_in_charge (course_code, lecturer_id, year) VALUES
 ('BST1234', 'LCT001', '2023-01-01'),
@@ -621,4 +648,3 @@ INSERT INTO courses_in_charge (course_code, lecturer_id, year) VALUES
 ('MG756', 'LCT003', '2023-01-01'),
 ('TCS1001', 'LCT004', '2023-01-01'),
 ('TCS1002', 'LCT005', '2023-01-01');
-
